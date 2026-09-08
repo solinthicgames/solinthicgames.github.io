@@ -4,38 +4,941 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Solinthic Games</title>
-  <meta name="description" content="Solinthic Games creates calm, focused and thoughtfully designed games.">
-
+  <!-- =========================================================
+       BASIC SEO
+       ========================================================= -->
+  <title>Solinthic Games — Independent Game Studio</title>
+  <meta name="description" content="Solinthic Games is an independent Czech game studio founded in 2026, creating thoughtful games in Unity and growing bolder with every project.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://solinthicgames.github.io/">
 
+  <!-- =========================================================
+       OPEN GRAPH / SOCIAL SHARING
+       ========================================================= -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Solinthic Games">
-  <meta property="og:title" content="Solinthic Games">
-  <meta property="og:description" content="Calm, focused and thoughtfully designed games.">
+  <meta property="og:title" content="Solinthic Games — Independent Game Studio">
+  <meta property="og:description" content="An independent Czech game studio founded in 2026. One developer, one growing journey, and games made with curiosity, care and ambition.">
   <meta property="og:url" content="https://solinthicgames.github.io/">
+  <meta property="og:locale" content="en_US">
 
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Solinthic Games — Independent Game Studio">
+  <meta name="twitter:description" content="An independent Czech game studio founded in 2026, creating thoughtful games in Unity and growing bolder with every project.">
+
+  <!-- =========================================================
+       STRUCTURED DATA
+       Important for helping search engines understand the site.
+       ========================================================= -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Solinthic Games",
-    "alternateName": "Solinthic",
-    "url": "https://solinthicgames.github.io/"
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://solinthicgames.github.io/#website",
+        "url": "https://solinthicgames.github.io/",
+        "name": "Solinthic Games",
+        "alternateName": "Solinthic",
+        "publisher": {
+          "@id": "https://solinthicgames.github.io/#organization"
+        }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://solinthicgames.github.io/#organization",
+        "name": "Solinthic Games",
+        "url": "https://solinthicgames.github.io/",
+        "foundingDate": "2026",
+        "description": "Independent game studio from the Czech Republic creating games in Unity."
+      }
+    ]
   }
   </script>
+
+  <style>
+    :root {
+      --bg: #050505;
+      --bg-soft: #0a0c0d;
+      --panel: rgba(255, 255, 255, 0.045);
+      --panel-hover: rgba(255, 255, 255, 0.068);
+      --text: #f4efe3;
+      --muted: #a9aaa7;
+      --muted-2: #767a78;
+      --line: rgba(255, 255, 255, 0.10);
+      --teal: #0c8d96;
+      --teal-bright: #18b8bc;
+      --amber: #ed9728;
+      --amber-soft: #f0b65b;
+      --max: 1180px;
+      --radius-lg: 30px;
+      --radius-md: 20px;
+      --shadow: 0 28px 80px rgba(0, 0, 0, 0.46);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 14% 10%, rgba(12, 141, 150, 0.10), transparent 30rem),
+        radial-gradient(circle at 87% 23%, rgba(237, 151, 40, 0.08), transparent 28rem),
+        linear-gradient(180deg, #020202 0%, #070809 45%, #030303 100%);
+      font-family:
+        Inter,
+        ui-sans-serif,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      opacity: 0.22;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 58px 58px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.65), transparent 72%);
+    }
+
+    a {
+      color: inherit;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .shell {
+      width: min(var(--max), calc(100% - 42px));
+      margin-inline: auto;
+    }
+
+    /* =========================================================
+       HEADER
+       ========================================================= */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid transparent;
+      background: rgba(5, 5, 5, 0.66);
+      backdrop-filter: blur(18px);
+    }
+
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 750;
+      letter-spacing: 0.19em;
+      text-transform: uppercase;
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 35% 30%, rgba(240,182,91,0.40), transparent 34%),
+        linear-gradient(135deg, rgba(12,141,150,0.65), rgba(237,151,40,0.65));
+      box-shadow: 0 0 32px rgba(12, 141, 150, 0.12);
+      font-family: Georgia, serif;
+      font-size: 1.2rem;
+      letter-spacing: 0;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-links a {
+      padding: 9px 12px;
+      border-radius: 999px;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.91rem;
+      font-weight: 650;
+      transition: color 160ms ease, background 160ms ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      color: var(--text);
+      background: rgba(255,255,255,0.055);
+      outline: none;
+    }
+
+    /* =========================================================
+       HERO
+       ========================================================= */
+    .hero {
+      min-height: 760px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(360px, 0.78fr);
+      align-items: center;
+      gap: clamp(44px, 8vw, 110px);
+      padding: 80px 0 100px;
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 2;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      margin: 0 0 24px;
+      color: var(--amber-soft);
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.20em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 32px;
+      height: 1px;
+      background: linear-gradient(90deg, var(--teal-bright), var(--amber));
+    }
+
+    h1, h2, h3, p {
+      margin-top: 0;
+    }
+
+    h1 {
+      max-width: 780px;
+      margin-bottom: 28px;
+      font-size: clamp(4.1rem, 8vw, 7.6rem);
+      line-height: 0.88;
+      letter-spacing: -0.068em;
+      font-weight: 760;
+    }
+
+    h1 span {
+      display: block;
+      color: transparent;
+      background: linear-gradient(95deg, #f5efe2 10%, #d8d4c9 48%, #efb554 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+
+    .hero-copy > p:not(.eyebrow) {
+      max-width: 670px;
+      margin-bottom: 34px;
+      color: var(--muted);
+      font-size: clamp(1.08rem, 1.55vw, 1.28rem);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .button {
+      min-height: 52px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 21px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 0.94rem;
+      font-weight: 760;
+      transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
+    }
+
+    .button:hover,
+    .button:focus-visible {
+      transform: translateY(-2px);
+      outline: none;
+    }
+
+    .button-primary {
+      border-color: transparent;
+      color: #061012;
+      background: linear-gradient(120deg, #69d4d0 0%, #f3ad45 100%);
+      box-shadow: 0 14px 42px rgba(18, 157, 162, 0.12);
+    }
+
+    .button-secondary {
+      color: var(--text);
+      background: rgba(255,255,255,0.045);
+    }
+
+    .button-secondary:hover {
+      background: rgba(255,255,255,0.075);
+      border-color: rgba(255,255,255,0.18);
+    }
+
+    .logo-stage {
+      position: relative;
+      min-height: 520px;
+      display: grid;
+      place-items: center;
+    }
+
+    .logo-stage::before,
+    .logo-stage::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .logo-stage::before {
+      width: 420px;
+      height: 420px;
+      border: 1px solid rgba(255,255,255,0.075);
+      box-shadow:
+        0 0 0 38px rgba(12,141,150,0.025),
+        0 0 0 76px rgba(237,151,40,0.018);
+    }
+
+    .logo-stage::after {
+      width: 270px;
+      height: 270px;
+      background:
+        radial-gradient(circle at 42% 42%, rgba(12,141,150,0.16), transparent 58%),
+        radial-gradient(circle at 62% 61%, rgba(237,151,40,0.12), transparent 53%);
+      filter: blur(24px);
+    }
+
+    .studio-logo {
+      position: relative;
+      z-index: 2;
+      width: min(100%, 510px);
+      filter: drop-shadow(0 24px 44px rgba(0,0,0,0.55));
+    }
+
+    /* =========================================================
+       COMMON SECTION STYLES
+       ========================================================= */
+    .section {
+      padding: 110px 0;
+    }
+
+    .section-border {
+      border-top: 1px solid var(--line);
+    }
+
+    .section-heading {
+      max-width: 760px;
+      margin-bottom: 50px;
+    }
+
+    .kicker {
+      margin-bottom: 16px;
+      color: var(--teal-bright);
+      font-size: 0.74rem;
+      font-weight: 820;
+      letter-spacing: 0.19em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      font-size: clamp(2.6rem, 5.2vw, 4.8rem);
+      line-height: 0.98;
+      letter-spacing: -0.052em;
+      font-weight: 720;
+    }
+
+    .section-heading p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    /* =========================================================
+       ABOUT / INTRODUCTION
+       Text below is deliberately plain HTML so it is easy to edit.
+       ========================================================= */
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(250px, 0.68fr) minmax(0, 1.32fr);
+      gap: clamp(46px, 8vw, 105px);
+      align-items: start;
+    }
+
+    .fact-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .fact {
+      padding: 18px 20px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: var(--panel);
+    }
+
+    .fact span {
+      display: block;
+      margin-bottom: 3px;
+      color: var(--muted-2);
+      font-size: 0.72rem;
+      font-weight: 780;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .fact strong {
+      font-size: 1.02rem;
+      font-weight: 690;
+    }
+
+    .story {
+      font-size: 1.08rem;
+      color: #d1d0cb;
+    }
+
+    .story p {
+      margin-bottom: 22px;
+    }
+
+    .story p:last-child {
+      margin-bottom: 0;
+    }
+
+    .story .lead {
+      color: var(--text);
+      font-size: 1.28rem;
+      line-height: 1.58;
+    }
+
+    .highlight {
+      color: #f2c172;
+    }
+
+    /* =========================================================
+       GAMES
+       To add another game later, copy one .game-card block.
+       ========================================================= */
+    .games-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .game-card {
+      position: relative;
+      min-height: 330px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 34px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background:
+        linear-gradient(145deg, rgba(255,255,255,0.055), rgba(255,255,255,0.025));
+      box-shadow: var(--shadow);
+      transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
+    }
+
+    .game-card::after {
+      content: "";
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      right: -95px;
+      bottom: -120px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(12,141,150,0.15), rgba(237,151,40,0.04) 48%, transparent 72%);
+      pointer-events: none;
+    }
+
+    .game-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(255,255,255,0.17);
+      background: var(--panel-hover);
+    }
+
+    .game-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 54px;
+    }
+
+    .tag {
+      padding: 6px 9px;
+      border: 1px solid rgba(255,255,255,0.095);
+      border-radius: 999px;
+      color: var(--muted);
+      background: rgba(0,0,0,0.18);
+      font-size: 0.74rem;
+      font-weight: 730;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .game-card h3 {
+      margin-bottom: 10px;
+      font-size: clamp(2rem, 3.4vw, 3.1rem);
+      line-height: 1;
+      letter-spacing: -0.042em;
+    }
+
+    .game-card p {
+      max-width: 560px;
+      margin-bottom: 26px;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .game-link {
+      position: relative;
+      z-index: 2;
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      width: fit-content;
+      color: var(--amber-soft);
+      text-decoration: none;
+      font-weight: 780;
+    }
+
+    .game-link::after {
+      content: "↗";
+      transition: transform 160ms ease;
+    }
+
+    .game-link:hover::after {
+      transform: translate(2px, -2px);
+    }
+
+    .future-card {
+      border-style: dashed;
+      box-shadow: none;
+      background: rgba(255,255,255,0.018);
+    }
+
+    .future-card::after {
+      background: radial-gradient(circle, rgba(237,151,40,0.07), transparent 70%);
+    }
+
+    /* =========================================================
+       VALUES
+       ========================================================= */
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .value {
+      padding: 27px;
+      border-top: 1px solid var(--line);
+    }
+
+    .value-number {
+      margin-bottom: 23px;
+      color: var(--muted-2);
+      font-family: Georgia, serif;
+      font-size: 0.95rem;
+    }
+
+    .value h3 {
+      margin-bottom: 10px;
+      font-size: 1.32rem;
+    }
+
+    .value p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    /* =========================================================
+       FOOTER
+       ========================================================= */
+    .site-footer {
+      padding: 42px 0 54px;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      color: var(--muted-2);
+      font-size: 0.88rem;
+    }
+
+    .footer-title {
+      color: var(--text);
+      font-weight: 760;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
+    @media (max-width: 920px) {
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        text-align: center;
+        padding-top: 88px;
+      }
+
+      .hero-copy > p:not(.eyebrow) {
+        margin-inline: auto;
+      }
+
+      .eyebrow,
+      .hero-actions {
+        justify-content: center;
+      }
+
+      .logo-stage {
+        min-height: 430px;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .games-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .values-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .shell {
+        width: min(100% - 26px, var(--max));
+      }
+
+      .nav {
+        min-height: 68px;
+      }
+
+      .brand {
+        font-size: 0.78rem;
+        letter-spacing: 0.14em;
+      }
+
+      .nav-links a {
+        padding: 8px 8px;
+        font-size: 0.82rem;
+      }
+
+      .hero {
+        gap: 35px;
+        padding: 68px 0 82px;
+      }
+
+      h1 {
+        font-size: clamp(3.5rem, 18vw, 5.3rem);
+      }
+
+      .logo-stage {
+        min-height: 330px;
+      }
+
+      .logo-stage::before {
+        width: 300px;
+        height: 300px;
+      }
+
+      .section {
+        padding: 82px 0;
+      }
+
+      .game-card {
+        min-height: 310px;
+        padding: 27px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition: none !important;
+      }
+    }
+  </style>
 </head>
 
 <body>
-  <h1>Solinthic Games</h1>
+  <header class="site-header">
+    <div class="shell nav">
+      <a class="brand" href="#top" aria-label="Solinthic Games home">
+        <span class="brand-mark" aria-hidden="true">S</span>
+        <span>Solinthic Games</span>
+      </a>
 
-  <h2>Sudoku Shizen</h2>
-  <p>A peaceful Sudoku experience inspired by Japanese nature.</p>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#games">Games</a>
+      </nav>
+    </div>
+  </header>
 
-  <p>
-    <a href="https://solinthicgames.github.io/sudoku-shizen-web/">
-      Visit Sudoku Shizen
-    </a>
-  </p>
+  <main id="top">
+
+    <!-- =======================================================
+         HERO
+         ======================================================= -->
+    <section class="shell hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Independent game studio · Czech Republic</p>
+
+        <h1>
+          Games made with
+          <span>curiosity.</span>
+        </h1>
+
+        <p>
+          Solinthic Games is a one-person independent studio from the heart of Europe,
+          creating games in Unity and learning, experimenting and growing with every project.
+        </p>
+
+        <div class="hero-actions">
+          <a class="button button-primary" href="#games">Explore the games</a>
+          <a class="button button-secondary" href="#about">Meet the studio</a>
+        </div>
+      </div>
+
+      <div class="logo-stage" aria-label="Solinthic Games logo">
+        <!-- Upload solin-logo.png to the same repository as index.html -->
+        <img class="studio-logo" src="solin-logo.png" alt="Solinthic Games">
+      </div>
+    </section>
+
+    <!-- =======================================================
+         INTRODUCTION / ABOUT
+         Edit the text in this section whenever the studio story evolves.
+         ======================================================= -->
+    <section class="section section-border" id="about">
+      <div class="shell">
+        <div class="section-heading">
+          <p class="kicker">Introduction</p>
+          <h2>A small studio at the beginning of a bigger journey.</h2>
+        </div>
+
+        <div class="about-grid">
+          <aside class="fact-list" aria-label="Studio facts">
+            <div class="fact">
+              <span>Founded</span>
+              <strong>2026</strong>
+            </div>
+
+            <div class="fact">
+              <span>Based in</span>
+              <strong>Czech Republic · Europe</strong>
+            </div>
+
+            <div class="fact">
+              <span>Studio size</span>
+              <strong>One independent developer</strong>
+            </div>
+
+            <div class="fact">
+              <span>Engine</span>
+              <strong>Unity</strong>
+            </div>
+          </aside>
+
+          <div class="story">
+            <!-- EDIT: STUDIO STORY -->
+            <p class="lead">
+              Solinthic Games was founded in 2026 as an independent Czech game studio
+              built around a simple idea: <span class="highlight">start creating, keep learning,
+              and let every new project become a little more ambitious than the last.</span>
+            </p>
+
+            <p>
+              Game development had fascinated me for years, but for a long time it felt like
+              something that was simply too large for one person to take on. Programming was
+              only one part of the equation; art, audio, design, testing, publishing and
+              distribution each demanded their own skills and resources.
+            </p>
+
+            <p>
+              Today, the tools available to independent creators have changed that equation.
+              What once felt out of reach has become a journey I can actually take — one project,
+              one lesson and one experiment at a time. Solinthic Games is the result of finally
+              deciding to begin.
+            </p>
+
+            <p>
+              I make games because I enjoy the process of turning an idea into something people
+              can experience for themselves. I am not trying to pretend that a one-person studio
+              has all the answers. Quite the opposite: the goal is to keep discovering them.
+              With every new game, I want to push a little further — toward projects that are
+              more confident, more distinctive and more original.
+            </p>
+
+            <p>
+              <strong>Sudoku Shizen</strong> is the studio's first release: a deliberately focused
+              first step into game development and publishing, and the starting point of the
+              Solinthic Games journey.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================
+         GAMES
+         To add a future title, duplicate one .game-card article.
+         ======================================================= -->
+    <section class="section section-border" id="games">
+      <div class="shell">
+        <div class="section-heading">
+          <p class="kicker">Games</p>
+          <h2>Projects from Solinthic Games.</h2>
+          <p>
+            The catalogue starts small by design. More projects will be added here as the studio grows.
+          </p>
+        </div>
+
+        <div class="games-grid">
+
+          <!-- GAME 01 -->
+          <article class="game-card">
+            <div>
+              <div class="game-meta">
+                <span class="tag">First release</span>
+                <span class="tag">Puzzle</span>
+                <span class="tag">Sudoku</span>
+              </div>
+
+              <h3>Sudoku Shizen</h3>
+              <p>
+                A peaceful Sudoku experience inspired by Japanese nature.
+              </p>
+            </div>
+
+            <a class="game-link" href="https://solinthicgames.github.io/sudoku-shizen-web/">
+              Visit Sudoku Shizen
+            </a>
+          </article>
+
+          <!-- PLACEHOLDER FOR THE NEXT GAME -->
+          <article class="game-card future-card">
+            <div>
+              <div class="game-meta">
+                <span class="tag">The journey continues</span>
+              </div>
+
+              <h3>What comes next?</h3>
+              <p>
+                Every project is a chance to try something new, learn another part of the craft
+                and take a more ambitious step forward.
+              </p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================
+         STUDIO APPROACH
+         These are intentionally general so they can remain relevant
+         even when future games have completely different styles.
+         ======================================================= -->
+    <section class="section section-border">
+      <div class="shell">
+        <div class="section-heading">
+          <p class="kicker">Approach</p>
+          <h2>Small steps. Better games.</h2>
+        </div>
+
+        <div class="values-grid">
+          <div class="value">
+            <div class="value-number">01</div>
+            <h3>Learn by creating</h3>
+            <p>
+              Every finished project matters. Shipping a game teaches lessons that prototypes never can.
+            </p>
+          </div>
+
+          <div class="value">
+            <div class="value-number">02</div>
+            <h3>Make each project bolder</h3>
+            <p>
+              The goal is not to repeat the same safe idea, but to grow in scope, identity and confidence.
+            </p>
+          </div>
+
+          <div class="value">
+            <div class="value-number">03</div>
+            <h3>Stay independent</h3>
+            <p>
+              A small studio can move slowly, experiment freely and let curiosity shape what comes next.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-inner">
+      <span class="footer-title">Solinthic Games</span>
+      <span>Independent game studio · Czech Republic · Founded 2026</span>
+    </div>
+  </footer>
 </body>
 </html>
